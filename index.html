@@ -132,9 +132,8 @@
       margin-bottom: 1rem;
     }
 
-    /* Force the hero line to never wrap */
+    /* Hero line: allow our manual <br> to make exactly 2 lines */
     .hero-line {
-      white-space: nowrap;
       display: inline-block;
     }
 
@@ -655,7 +654,7 @@
       }
     }
 
-    /* Random big floating lights on the page */
+    /* Random big floating lights on the page – now 25% smaller */
     .floating-lights-layer {
       position: fixed;
       inset: 0;
@@ -665,8 +664,8 @@
 
     .floating-light {
       position: fixed;
-      width: 42px;
-      height: 42px;
+      width: 32px;   /* was 42px */
+      height: 32px;  /* was 42px */
       border-radius: 999px;
       background: #f97316;
       box-shadow: 0 0 12px rgba(248, 250, 252, 0.9);
@@ -680,8 +679,8 @@
       top: -4px;
       left: 50%;
       transform: translateX(-50%);
-      width: 16px;
-      height: 8px;
+      width: 12px;   /* was 16px */
+      height: 6px;   /* was 8px */
       border-radius: 999px 999px 0 0;
       background: #0f172a;
     }
@@ -769,7 +768,8 @@
         <div class="tagline">Dad has officially snapped</div>
         <h1>
           <span class="hero-line">
-            This was supposed to be a normal Christmas list, but I am not normal (just ask mom).
+            This was supposed to be a normal Christmas list,<br>
+            but I am not normal. Just ask Mom...
           </span>
         </h1>
         <p class="hero-sub">
@@ -1096,7 +1096,7 @@
       }
     })();
 
-    // RANDOM BIG FLOATING LIGHTS
+    // RANDOM BIG FLOATING LIGHTS (smaller now)
     (function () {
       const layer = document.getElementById("floating-lights-layer");
       if (!layer) return;
