@@ -215,7 +215,7 @@
       overflow: hidden;
     }
 
-    /* Bouncing elf “crew” */
+    /* Bouncing elf crew */
     .elf {
       width: 80px;
       height: 120px;
@@ -406,7 +406,7 @@
       padding: 2rem 1rem 3rem;
     }
 
-    /* Snow container (actual flakes added via JS for randomness) */
+    /* Snow container (flakes added via JS for randomness) */
     .snow-layer {
       position: fixed;
       inset: 0;
@@ -435,7 +435,7 @@
       }
     }
 
-    /* SANTA COMIC SLEIGH – diagonal, extra whimsical */
+    /* SANTA COMIC SLEIGH – diagonal, whimsical */
     .santa-sleigh {
       position: fixed;
       top: -15vh;
@@ -559,19 +559,39 @@
       font-size: 2.8rem;
     }
 
-    /* Random flashing Christmas light strings */
-    .lights-layer {
+    /* Single whimsical string of Christmas lights across the top */
+    .top-lights {
       position: fixed;
-      inset: 0;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 60px;
+      z-index: 6;
       pointer-events: none;
-      z-index: 3;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
     }
 
-    .light-string {
-      position: absolute;
+    .light-wire {
+      position: relative;
       display: flex;
-      gap: 0.6rem;
-      transform-origin: center;
+      gap: 0.9rem;
+      padding: 0.75rem 1.5rem 0;
+      align-items: flex-start;
+    }
+
+    .light-wire::before {
+      content: "";
+      position: absolute;
+      top: 4px;
+      left: 0;
+      right: 0;
+      height: 26px;
+      border-bottom: 2px solid #334155;
+      border-radius: 999px;
+      opacity: 0.85;
+      transform: translateY(-4px);
     }
 
     .light-bulb {
@@ -581,6 +601,8 @@
       background: #f97316;
       box-shadow: 0 0 6px rgba(248, 250, 252, 0.8);
       animation: bulb-blink 1.2s infinite alternate;
+      position: relative;
+      transform-origin: top center;
     }
 
     .light-bulb::after {
@@ -591,6 +613,37 @@
       border-radius: 999px 999px 0 0;
       background: #0f172a;
       margin: -4px auto 0;
+    }
+
+    /* Color + height variation for whimsy */
+    .light-bulb:nth-child(5n + 1) {
+      background: #f97316;
+      animation-duration: 1.1s;
+      transform: translateY(8px);
+    }
+
+    .light-bulb:nth-child(5n + 2) {
+      background: #22c55e;
+      animation-duration: 1.4s;
+      transform: translateY(14px);
+    }
+
+    .light-bulb:nth-child(5n + 3) {
+      background: #38bdf8;
+      animation-duration: 1s;
+      transform: translateY(18px);
+    }
+
+    .light-bulb:nth-child(5n + 4) {
+      background: #e11d48;
+      animation-duration: 1.3s;
+      transform: translateY(12px);
+    }
+
+    .light-bulb:nth-child(5n) {
+      background: #facc15;
+      animation-duration: 1.6s;
+      transform: translateY(20px);
     }
 
     @keyframes bulb-blink {
@@ -610,11 +663,35 @@
   </style>
 </head>
 <body>
-  <!-- random snowflakes and light strings are added via JS into these layers -->
+  <!-- random snowflakes added via JS -->
   <div class="snow-layer" id="snow-layer"></div>
-  <div class="lights-layer" id="lights-layer"></div>
 
-  <!-- SANTA PULLING A SLEIGH FULL OF REINDEER ACROSS THE SCREEN (DIAGONAL) -->
+  <!-- single whimsical string of lights across the top -->
+  <div class="top-lights" aria-hidden="true">
+    <div class="light-wire">
+      <!-- you can add or remove bulbs, the CSS will handle the whimsy -->
+      <span class="light-bulb"></span>
+      <span class="light-bulb"></span>
+      <span class="light-bulb"></span>
+      <span class="light-bulb"></span>
+      <span class="light-bulb"></span>
+      <span class="light-bulb"></span>
+      <span class="light-bulb"></span>
+      <span class="light-bulb"></span>
+      <span class="light-bulb"></span>
+      <span class="light-bulb"></span>
+      <span class="light-bulb"></span>
+      <span class="light-bulb"></span>
+      <span class="light-bulb"></span>
+      <span class="light-bulb"></span>
+      <span class="light-bulb"></span>
+      <span class="light-bulb"></span>
+      <span class="light-bulb"></span>
+      <span class="light-bulb"></span>
+    </div>
+  </div>
+
+  <!-- Santa + sleigh + reindeer flying diagonally -->
   <div class="santa-sleigh">
     <div class="santa-speech">
       this was supposed to be a list, now it’s a cyber Christmas event
@@ -647,13 +724,12 @@
       <div>
         <div class="tagline">Dad has officially snapped</div>
         <h1>
-          This was supposed to be a normal Christmas<br />
-          but I am not normal.
+          This was supposed to be a normal Christmas list,<br />
+          but I am not normal (just ask mom).
         </h1>
         <p class="hero-sub">
-          After being asked “What do you want for Christmas?” one too many times,
-          I did the only reasonable thing: built a full cyber Christmas shrine
-          with flying Santa, random snow, and a glowing gift grid.
+          After being asked “What do you want for Christmas?” I did the only reasonable thing:
+          script a full cyber Christmas shrine with flying Santa, random snow, and a glowing gift grid.
         </p>
         <p class="wtf-note">
           If you are wondering “why did he turn his wish list into a website?” –
@@ -888,7 +964,7 @@
     Built with too much free time, not enough coffee, and a lot of love. ❤️
   </footer>
 
-  <!-- Animated AI terminal + random snow + random lights -->
+  <!-- Animated AI terminal + random snow -->
   <script>
     // DAD AI TERMINAL
     (function () {
@@ -914,7 +990,6 @@
 
       function typeLoop() {
         if (lineIndex >= lines.length) {
-          // pause then restart
           setTimeout(() => {
             output.innerHTML = "";
             lineIndex = 0;
@@ -938,9 +1013,8 @@
           }
           lastLine.textContent = currentLine;
           output.scrollTop = output.scrollHeight;
-          setTimeout(typeLoop, 40); // typing speed
+          setTimeout(typeLoop, 40);
         } else {
-          // next line
           charIndex = 0;
           currentLine = "";
           lineIndex++;
@@ -977,41 +1051,6 @@
         span.style.setProperty("--drift", drift);
 
         snowLayer.appendChild(span);
-      }
-    })();
-
-    // RANDOM FLASHING CHRISTMAS LIGHT STRINGS
-    (function () {
-      const lightsLayer = document.getElementById("lights-layer");
-      if (!lightsLayer) return;
-
-      const stringCount = 7;
-      const colors = ["#f97316", "#22c55e", "#38bdf8", "#e11d48", "#facc15"];
-
-      for (let i = 0; i < stringCount; i++) {
-        const string = document.createElement("div");
-        string.className = "light-string";
-
-        const bulbs = 10 + Math.floor(Math.random() * 8); // 10 - 17 bulbs
-        for (let j = 0; j < bulbs; j++) {
-          const bulb = document.createElement("div");
-          bulb.className = "light-bulb";
-          const color = colors[Math.floor(Math.random() * colors.length)];
-          bulb.style.background = color;
-          bulb.style.animationDuration = (0.9 + Math.random() * 0.9) + "s";
-          bulb.style.animationDelay = (Math.random() * 1.5) + "s";
-          string.appendChild(bulb);
-        }
-
-        const top = Math.random() * 80; // vh
-        const left = Math.random() * 80; // vw
-        const rotation = (Math.random() * 40 - 20); // -20deg to 20deg
-
-        string.style.top = top + "vh";
-        string.style.left = left + "vw";
-        string.style.transform = "rotate(" + rotation + "deg)";
-
-        lightsLayer.appendChild(string);
       }
     })();
   </script>
