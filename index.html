@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dad's Ridiculously Extra Xmas List</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #050816;
+      --accent: #ff4d4d;
+      --accent2: #00ffc6;
+      --text: #fdfdfd;
+      --card: rgba(15, 23, 42, 0.9);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #1b2948 0, #050816 50%, #000 100%);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .snow {
+      pointer-events: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image:
+        radial-gradient(2px 2px at 10% 20%, rgba(255,255,255,0.8) 50%, transparent 50%),
+        radial-gradient(3px 3px at 80% 30%, rgba(255,255,255,0.8) 50%, transparent 50%),
+        radial-gradient(2px 2px at 50% 80%, rgba(255,255,255,0.8) 50%, transparent 50%);
+      background-size: 200px 200px;
+      animation: snow 8s linear infinite;
+      z-index: 1;
+    }
+
+    @keyframes snow {
+      from { transform: translateY(-10px); }
+      to { transform: translateY(10px); }
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      background: rgba(5, 8, 22, 0.9);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-title {
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-title span {
+      font-size: 1.5rem;
+    }
+
+    .nav-links a {
+      margin-left: 1rem;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    .nav-links a:hover {
+      opacity: 1;
+      color: var(--accent2);
+    }
+
+    main {
+      position: relative;
+      z-index: 2;
+    }
+
+    section {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 3rem 1.25rem;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr);
+      gap: 2.5rem;
+      align-items: center;
+      padding-top: 3rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    h1 {
+      font-size: clamp(2.3rem, 4vw, 3rem);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .hero-sub {
+      font-size: 0.98rem;
+      max-width: 30rem;
+      opacity: 0.9;
+      margin-bottom: 1.5rem;
+    }
+
+    .tagline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(15, 23, 42, 0.9);
+      padding: 0.4rem 0.8rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.08);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 0.75rem;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .btn {
+      border-radius: 999px;
+      border: none;
+      padding: 0.7rem 1.3rem;
+      font-size: 0.95rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      text-decoration: none;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(120deg, var(--accent), #ff9a62);
+      color: #fff;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.5);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--accent2);
+      border: 1px solid rgba(148, 163, 184, 0.7);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(15, 23, 42, 0.8);
+      transform: translateY(-1px);
+    }
+
+    .hero-aside {
+      position: relative;
+      padding: 1.5rem;
+      border-radius: 1.2rem;
+      background: radial-gradient(circle at top, rgba(56, 189, 248, 0.18), rgba(15, 23, 42, 0.98));
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      overflow: hidden;
+    }
+
+    .elf {
+      width: 80px;
+      height: 120px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #22c55e, #14532d);
+      position: absolute;
+      bottom: -10px;
+      left: 5%;
+      animation: bounce 2.2s ease-in-out infinite;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+    }
+
+    .elf::before {
+      content: "";
+      width: 46px;
+      height: 46px;
+      border-radius: 999px;
+      background: #facc15;
+      margin-top: -20px;
+      box-shadow: 0 0 0 3px #022c22;
+    }
+
+    .elf:nth-child(2) {
+      left: 40%;
+      animation-delay: 0.4s;
+      background: radial-gradient(circle at 30% 20%, #22d3ee, #0f172a);
+    }
+
+    .elf:nth-child(3) {
+      left: 75%;
+      animation-delay: 0.8s;
+      background: radial-gradient(circle at 30% 20%, #a855f7, #3b0764);
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-14px); }
+    }
+
+    .console {
+      background: rgba(15, 23, 42, 0.94);
+      border-radius: 0.75rem;
+      padding: 1rem 1.2rem;
+      margin-top: 4.5rem;
+      font-family: "Courier New", monospace;
+      font-size: 0.78rem;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      max-height: 210px;
+      overflow-y: auto;
+    }
+
+    .console-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.35rem;
+      opacity: 0.8;
+      font-size: 0.7rem;
+    }
+
+    .console-dots span {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      display: inline-block;
+      margin-right: 4px;
+      background: #f97373;
+    }
+
+    .console-dots span:nth-child(2) { background: #facc15; }
+    .console-dots span:nth-child(3) { background: #4ade80; }
+
+    .console-line {
+      margin-bottom: 0.2rem;
+      white-space: pre-wrap;
+    }
+
+    .workshop {
+      margin-top: 1.5rem;
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .workshop h2 {
+      font-size: 1.2rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.4rem;
+      font-size: 0.78rem;
+    }
+
+    .pill {
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      opacity: 0.85;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .gift-card {
+      background: var(--card);
+      border-radius: 0.85rem;
+      padding: 0.85rem;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .gift-image {
+      background: radial-gradient(circle at center, rgba(148,163,184,0.35), rgba(15,23,42,0.95));
+      border-radius: 0.6rem;
+      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      text-align: center;
+      padding: 0.75rem;
+      margin-bottom: 0.5rem;
+      opacity: 0.9;
+    }
+
+    .gift-title {
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+      font-size: 0.95rem;
+    }
+
+    .gift-note {
+      font-size: 0.82rem;
+      opacity: 0.9;
+      margin-bottom: 0.6rem;
+    }
+
+    .gift-link {
+      margin-top: auto;
+      font-size: 0.8rem;
+      text-decoration: none;
+      color: var(--accent2);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      opacity: 0.9;
+    }
+
+    .gift-link:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.75rem;
+      opacity: 0.75;
+      padding: 2rem 1rem 3rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="snow"></div>
+
+  <header>
+    <div class="nav">
+      <div class="nav-title">
+        <span>🎄</span> DAD_XMAS_2025
+      </div>
+      <div class="nav-links">
+        <a href="#top">Home</a>
+        <a href="#list">The List (12)</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div>
+        <div class="tagline">Finally… a Christmas list</div>
+        <h1>Years of “What do you want?”<br>have led to <em>this</em>.</h1>
+        <p class="hero-sub">
+          Congratulations, you have unlocked <strong>Dad’s Ridiculously Extra Xmas List</strong>.
+          You wanted a simple list. You got a whole over-engineered, AI-powered,
+          elf-operated web experience instead.
+        </p>
+        <div class="button-row">
+          <a href="#list" class="btn btn-primary">
+            🎁 Show me the gifts
+          </a>
+          <a href="#workshop" class="btn btn-ghost">
+            🧝 Visit Santa’s AI workshop
+          </a>
+        </div>
+      </div>
+
+      <aside class="hero-aside">
+        <div class="elf"></div>
+        <div class="elf"></div>
+        <div class="elf"></div>
+
+        <div class="console">
+          <div class="console-header">
+            <div class="console-dots">
+              <span></span><span></span><span></span>
+            </div>
+            <span>DAD_AI_TERMINAL</span>
+          </div>
+          <div class="console-line">> booting DAD_XMAS_2025…</div>
+          <div class="console-line">> scanning for: socks, ties, random mugs</div>
+          <div class="console-line">> status: ❌ request denied</div>
+          <div class="console-line">> locating: gadgets, toys, coffee, tools…</div>
+          <div class="console-line">> probability of dad happiness: 97.3%</div>
+          <div class="console-line">> warning: contents may cause “what the heck?” reactions</div>
+          <div class="console-line">> continue to section: #list</div>
+        </div>
+
+        <div id="workshop" class="workshop">
+          <div>
+            <h2>Santa’s AI Workshop™</h2>
+            <p style="font-size:0.85rem; opacity:0.9;">
+              Elves have been retrained as prompt engineers. My wishlist is now
+              carefully optimized for:
+            </p>
+            <div class="pill-row">
+              <div class="pill">Maximum dad joy</div>
+              <div class="pill">Minimum “meh” gifts</div>
+              <div class="pill">0% surprise socks</div>
+              <div class="pill">Certified “worth it”</div>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="list">
+      <h2 class="section-title">The List – 12 Gifts I Actually Want 🎁</h2>
+      <p style="max-width:600px; font-size:0.9rem; opacity:0.9; margin-bottom:1rem;">
+        Here it is: a neat grid of things that would make me very happy.
+        Click any card to open the product link. Feel free to coordinate,
+        conspire, or overachieve.
+      </p>
+
+      <div class="grid">
+        <!-- 12 cards with placeholders -->
+
+        <article class="gift-card">
+          <div class="gift-image">
+            Add a picture here<br>(e.g., Noise-Canceling Headphones)
+          </div>
+          <div class="gift-title">1. Noise-Canceling Headphones</div>
+          <div class="gift-note">
+            For those moments when you’re all asking what I want for Christmas… again.
+          </div>
+          <a class="gift-link" href="#" target="_blank" rel="noopener">
+            View item <span>↗</span>
+          </a>
+        </article>
+
+        <article class="gift-card">
+          <div class="gift-image">
+            Add a picture here<br>(e.g., Fancy Coffee Machine)
+          </div>
+          <div class="gift-title">2. Fancy Coffee Machine</div>
+          <div class="gift-note">
+            Daily fuel for school runs, work, and pretending to be an adult.
+          </div>
+          <a class="gift-link" href="#" target="_blank" rel="noopener">
+            View item <span>↗</span>
+          </a>
+        </article>
+
+        <article class="gift-card">
+          <div class="gift-image">
+            Add a picture here<br>(e.g., Lego / Model Kit)
+          </div>
+          <div class="gift-title">3. Grown-Up Toy (Totally)</div>
+          <div class="gift-note">
+            This is absolutely a “display piece” and not for playing. Definitely not.
+          </div>
+          <a class="gift-link" href="#" target="_blank" rel="noopener">
+            View item <span>↗</span>
+          </a>
+        </article>
+
+        <article class="gift-card">
+          <div class="gift-image">Add a picture here</div>
+          <div class="gift-title">4. Gift #4</div>
+          <div class="gift-note">
+            Replace this title, note, and link with something you actually want.
+          </div>
+          <a class="gift-link" href="#" target="_blank" rel="noopener">
+            View item <span>↗</span>
+          </a>
+        </article>
+
+        <article class="gift-card">
+          <div class="gift-image">Add a picture here</div>
+          <div class="gift-title">5. Gift #5</div>
+          <div class="gift-note">
+            Customize me in the HTML file or GitHub editor.
+          </div>
+          <a class="gift-link" href="#" target="_blank" rel="noopener">
+            View item <span>↗</span>
+          </a>
+        </article>
+
+        <article class="gift-card">
+          <div class="gift-image">Add a picture here</div>
+          <div class="gift-title">6. Gift #6</div>
+          <div class="gift-note">
+            Another slot for something awesome.
+          </div>
+          <a class="gift-link" href="#" target="_blank" rel="noopener">
+            View item <span>↗</span>
+          </a>
+        </article>
+
+        <article class="gift-card">
+          <div class="gift-image">Add a picture here</div>
+          <div class="gift-title">7. Gift #7</div>
+          <div class="gift-note">
+            Yes, I went full overkill and made a whole website.
+          </div>
+          <a class="gift-link" href="#" target="_blank" rel="noopener">
+            View item <span>↗</span>
+          </a>
+        </article>
+
+        <article class="gift-card">
+          <div class="gift-image">Add a picture here</div>
+          <div class="gift-title">8. Gift #8</div>
+          <div class="gift-note">
+            Paste your product link into the href attribute below.
+          </div>
+          <a class="gift-link" href="#" target="_blank" rel="noopener">
+            View item <span>↗</span>
+          </a>
+        </article>
+
+        <article class="gift-card">
+          <div class="gift-image">Add a picture here</div>
+          <div class="gift-title">9. Gift #9</div>
+          <div class="gift-note">
+            Example: tools, hobby gear, games, etc.
+          </div>
+          <a class="gift-link" href="#" target="_blank" rel="noopener">
+            View item <span>↗</span>
+          </a>
+        </article>
+
+        <article class="gift-card">
+          <div class="gift-image">Add a picture here</div>
+          <div class="gift-title">10. Gift #10</div>
+          <div class="gift-note">
+            They can coordinate so you don’t get duplicates.
+          </div>
+          <a class="gift-link" href="#" target="_blank" rel="noopener">
+            View item <span>↗</span>
+          </a>
+        </article>
+
+        <article class="gift-card">
+          <div class="gift-image">Add a picture here</div>
+          <div class="gift-title">11. Gift #11</div>
+          <div class="gift-note">
+            You can also swap any card out later.
+          </div>
+          <a class="gift-link" href="#" target="_blank" rel="noopener">
+            View item <span>↗</span>
+          </a>
+        </article>
+
+        <article class="gift-card">
+          <div class="gift-image">Add a picture here</div>
+          <div class="gift-title">12. Gift #12</div>
+          <div class="gift-note">
+            The grand finale gift slot. Make it a good one.
+          </div>
+          <a class="gift-link" href="#" target="_blank" rel="noopener">
+            View item <span>↗</span>
+          </a>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Built with too much free time, not enough coffee, and a lot of love. ❤️
+  </footer>
+</body>
+</html>
