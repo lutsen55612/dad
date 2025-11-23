@@ -99,4 +99,704 @@
 
     section {
       max-width: 1000px;
-      margin: 0 au
+      margin: 0 auto;
+      padding: 3rem 1.25rem;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr);
+      gap: 2.5rem;
+      align-items: center;
+      padding-top: 3rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    h1 {
+      font-size: clamp(2.3rem, 4vw, 3rem);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .hero-sub {
+      font-size: 0.98rem;
+      max-width: 30rem;
+      opacity: 0.9;
+      margin-bottom: 1.5rem;
+    }
+
+    .tagline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(15, 23, 42, 0.9);
+      padding: 0.4rem 0.8rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.08);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 0.75rem;
+    }
+
+    .wtf-note {
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+      opacity: 0.8;
+      font-style: italic;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .btn {
+      border-radius: 999px;
+      border: none;
+      padding: 0.7rem 1.3rem;
+      font-size: 0.95rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      text-decoration: none;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(120deg, var(--accent), #ff9a62);
+      color: #fff;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.5);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--accent2);
+      border: 1px solid rgba(148, 163, 184, 0.7);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(15, 23, 42, 0.8);
+      transform: translateY(-1px);
+    }
+
+    .hero-aside {
+      position: relative;
+      padding: 1.5rem;
+      border-radius: 1.2rem;
+      background: radial-gradient(circle at top, rgba(56, 189, 248, 0.18), rgba(15, 23, 42, 0.98));
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      overflow: hidden;
+    }
+
+    /* Bouncing elf “crew” */
+    .elf {
+      width: 80px;
+      height: 120px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #22c55e, #14532d);
+      position: absolute;
+      bottom: -10px;
+      left: 5%;
+      animation: bounce 2.2s ease-in-out infinite;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+    }
+
+    .elf::before {
+      content: "";
+      width: 46px;
+      height: 46px;
+      border-radius: 999px;
+      background: #facc15;
+      margin-top: -20px;
+      box-shadow: 0 0 0 3px #022c22;
+    }
+
+    .elf:nth-child(2) {
+      left: 40%;
+      animation-delay: 0.4s;
+      background: radial-gradient(circle at 30% 20%, #22d3ee, #0f172a);
+    }
+
+    .elf:nth-child(3) {
+      left: 75%;
+      animation-delay: 0.8s;
+      background: radial-gradient(circle at 30% 20%, #a855f7, #3b0764);
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-14px); }
+    }
+
+    /* Console styles */
+    .console {
+      background: rgba(15, 23, 42, 0.94);
+      border-radius: 0.75rem;
+      padding: 1rem 1.2rem;
+      margin-top: 4.5rem;
+      font-family: "Courier New", monospace;
+      font-size: 0.78rem;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      max-height: 210px;
+      overflow-y: auto;
+    }
+
+    .console-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.35rem;
+      opacity: 0.8;
+      font-size: 0.7rem;
+    }
+
+    .console-dots span {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      display: inline-block;
+      margin-right: 4px;
+      background: #f97373;
+    }
+
+    .console-dots span:nth-child(2) { background: #facc15; }
+    .console-dots span:nth-child(3) { background: #4ade80; }
+
+    .console-line {
+      margin-bottom: 0.2rem;
+      white-space: pre-wrap;
+    }
+
+    .workshop {
+      margin-top: 1.5rem;
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .workshop h2 {
+      font-size: 1.2rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.4rem;
+      font-size: 0.78rem;
+    }
+
+    .pill {
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      opacity: 0.85;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .gift-card {
+      background: var(--card);
+      border-radius: 0.85rem;
+      padding: 0.85rem;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .gift-image {
+      background: radial-gradient(circle at center, rgba(148,163,184,0.35), rgba(15,23,42,0.95));
+      border-radius: 0.6rem;
+      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      text-align: center;
+      padding: 0.75rem;
+      margin-bottom: 0.5rem;
+      opacity: 0.9;
+    }
+
+    .gift-title {
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+      font-size: 0.95rem;
+    }
+
+    .gift-note {
+      font-size: 0.82rem;
+      opacity: 0.9;
+      margin-bottom: 0.6rem;
+    }
+
+    .gift-link {
+      margin-top: auto;
+      font-size: 0.8rem;
+      text-decoration: none;
+      color: var(--accent2);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      opacity: 0.9;
+    }
+
+    .gift-link:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.75rem;
+      opacity: 0.75;
+      padding: 2rem 1rem 3rem;
+    }
+
+    /* SANTA ON A BROOMSTICK – absolute nonsense */
+
+    .santa-broom {
+      position: fixed;
+      top: 12%;
+      left: -25%;
+      z-index: 4;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      animation: santa-fly 22s linear infinite;
+      pointer-events: none;
+    }
+
+    .santa-body {
+      background: radial-gradient(circle at 30% 20%, #ef4444, #7f1d1d);
+      border-radius: 999px;
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 12px rgba(248, 250, 252, 0.7);
+      position: relative;
+      font-size: 40px;
+    }
+
+    .santa-body::after {
+      content: "🎅";
+      position: relative;
+      top: -2px;
+    }
+
+    .broom {
+      width: 120px;
+      height: 10px;
+      background: linear-gradient(to right, #92400e, #fbbf24);
+      border-radius: 999px;
+      position: relative;
+      transform: rotate(-4deg);
+    }
+
+    .broom::after {
+      content: "";
+      position: absolute;
+      right: -10px;
+      top: -6px;
+      width: 26px;
+      height: 22px;
+      background: radial-gradient(circle at top, #facc15, #b45309);
+      clip-path: polygon(0 0, 100% 30%, 80% 100%, 10% 100%);
+    }
+
+    .santa-caption {
+      position: absolute;
+      top: -24px;
+      left: 0;
+      font-size: 0.7rem;
+      white-space: nowrap;
+      transform: translateX(-10%);
+      text-shadow: 0 0 4px #000;
+    }
+
+    @keyframes santa-fly {
+      0% { transform: translateX(-120vw); }
+      100% { transform: translateX(120vw); }
+    }
+
+    /* Blinking Christmas trees – full chaos */
+
+    .tree-row {
+      margin-top: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      font-size: 2.2rem;
+    }
+
+    .tree {
+      position: relative;
+      animation: tree-blink 1.3s infinite steps(1);
+    }
+
+    .tree:nth-child(2) { animation-duration: 1.1s; }
+    .tree:nth-child(3) { animation-duration: 1.7s; }
+    .tree:nth-child(4) { animation-duration: 0.9s; }
+    .tree:nth-child(5) { animation-duration: 1.5s; }
+
+    .tree::after {
+      content: "✨";
+      position: absolute;
+      top: -0.7rem;
+      left: 35%;
+      font-size: 1.1rem;
+      opacity: 0.8;
+    }
+
+    @keyframes tree-blink {
+      0%   { filter: drop-shadow(0 0 0px rgba(255,255,255,0.0)); }
+      25%  { filter: drop-shadow(0 0 6px rgba(248,113,113,1)); }
+      50%  { filter: drop-shadow(0 0 6px rgba(56,189,248,1)); }
+      75%  { filter: drop-shadow(0 0 6px rgba(244,114,182,1)); }
+      100% { filter: drop-shadow(0 0 0px rgba(255,255,255,0.0)); }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="snow"></div>
+
+  <!-- SANTA FLYING ON A BROOMSTICK -->
+  <div class="santa-broom">
+    <div class="santa-body">
+      <div class="santa-caption">totally normal christmas</div>
+    </div>
+    <div class="broom"></div>
+  </div>
+
+  <header>
+    <div class="nav">
+      <div class="nav-title">
+        <span>🎄</span> DAD_XMAS_2025
+      </div>
+      <div class="nav-links">
+        <a href="#top">Home</a>
+        <a href="#list">The List (12)</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div>
+        <div class="tagline">It was supposed to be a simple list</div>
+        <h1>Years of “What do you want?”<br>have escalated into <em>this</em>.</h1>
+        <p class="hero-sub">
+          You wanted a normal Christmas list. Instead you got an AI terminal,
+          flying Santa on a broomstick, and flashing trees. Please enjoy this
+          totally reasonable response.
+        </p>
+        <p class="wtf-note">
+          If you are currently saying “what the actual hell is this?”, then it is working as intended.
+        </p>
+        <div class="button-row" style="margin-top:1rem;">
+          <a href="#list" class="btn btn-primary">
+            🎁 Show me the gifts
+          </a>
+          <a href="#workshop" class="btn btn-ghost">
+            🧝 Visit Santa’s AI workshop
+          </a>
+        </div>
+
+        <!-- Blinking tree chaos -->
+        <div class="tree-row">
+          <span class="tree">🎄</span>
+          <span class="tree">🎄</span>
+          <span class="tree">🎄</span>
+          <span class="tree">🎄</span>
+          <span class="tree">🎄</span>
+        </div>
+      </div>
+
+      <aside class="hero-aside">
+        <div class="elf"></div>
+        <div class="elf"></div>
+        <div class="elf"></div>
+
+        <!-- Animated DAD_AI_TERMINAL -->
+        <div class="console">
+          <div class="console-header">
+            <div class="console-dots">
+              <span></span><span></span><span></span>
+            </div>
+            <span>DAD_AI_TERMINAL</span>
+          </div>
+          <div id="console-output"></div>
+        </div>
+
+        <div id="workshop" class="workshop">
+          <div>
+            <h2>Santa’s AI Workshop™</h2>
+            <p style="font-size:0.85rem; opacity:0.9;">
+              Elves have been retrained as prompt engineers. My wishlist is now
+              carefully optimized for:
+            </p>
+            <div class="pill-row">
+              <div class="pill">Maximum dad joy</div>
+              <div class="pill">Minimum “meh” gifts</div>
+              <div class="pill">0% surprise socks</div>
+              <div class="pill">Certified “worth it”</div>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="list">
+      <h2 class="section-title">The List – 12 Gifts I Actually Want 🎁</h2>
+      <p style="max-width:600px; font-size:0.9rem; opacity:0.9; margin-bottom:1rem;">
+        Here it is: a neat grid of things that would make me very happy.
+        Click any card to open the product link. Feel free to coordinate,
+        conspire, or dramatically overachieve.
+      </p>
+
+      <div class="grid">
+        <!-- 12 cards with placeholders you can customize -->
+
+        <article class="gift-card">
+          <div class="gift-image">
+            Add a product image here<br>(e.g., Noise-Canceling Headphones)
+          </div>
+          <div class="gift-title">1. Noise-Canceling Headphones</div>
+          <div class="gift-note">
+            For when I love you all very much but also would like to not hear anything for a bit.
+          </div>
+          <a class="gift-link" href="#" target="_blank" rel="noopener">
+            View item <span>↗</span>
+          </a>
+        </article>
+
+        <article class="gift-card">
+          <div class="gift-image">
+            Add a product image here<br>(e.g., Fancy Coffee Machine)
+          </div>
+          <div class="gift-title">2. Fancy Coffee Machine</div>
+          <div class="gift-note">
+            Fuel for being your unpaid Uber driver, chef, IT support, and half-decent adult.
+          </div>
+          <a class="gift-link" href="#" target="_blank" rel="noopener">
+            View item <span>↗</span>
+          </a>
+        </article>
+
+        <article class="gift-card">
+          <div class="gift-image">
+            Add a product image here<br>(e.g., Lego / Model Kit / Toy)
+          </div>
+          <div class="gift-title">3. Grown-Up Toy (Totally)</div>
+          <div class="gift-note">
+            This is absolutely a “display piece” and not for playing with on the floor. Definitely not.
+          </div>
+          <a class="gift-link" href="#" target="_blank" rel="noopener">
+            View item <span>↗</span>
+          </a>
+        </article>
+
+        <article class="gift-card">
+          <div class="gift-image">Add a product image here</div>
+          <div class="gift-title">4. Gift #4</div>
+          <div class="gift-note">
+            Replace this with something I’d actually like. (No, not socks.)
+          </div>
+          <a class="gift-link" href="#" target="_blank" rel="noopener">
+            View item <span>↗</span>
+          </a>
+        </article>
+
+        <article class="gift-card">
+          <div class="gift-image">Add a product image here</div>
+          <div class="gift-title">5. Gift #5</div>
+          <div class="gift-note">
+            Customize me in GitHub by editing index.html. I believe in you (a little).
+          </div>
+          <a class="gift-link" href="#" target="_blank" rel="noopener">
+            View item <span>↗</span>
+          </a>
+        </article>
+
+        <article class="gift-card">
+          <div class="gift-image">Add a product image here</div>
+          <div class="gift-title">6. Gift #6</div>
+          <div class="gift-note">
+            Another slot for something awesome, practical, or unnecessarily overpowered.
+          </div>
+          <a class="gift-link" href="#" target="_blank" rel="noopener">
+            View item <span>↗</span>
+          </a>
+        </article>
+
+        <article class="gift-card">
+          <div class="gift-image">Add a product image here</div>
+          <div class="gift-title">7. Gift #7</div>
+          <div class="gift-note">
+            Yes, I built a whole website instead of writing a bullet list. No, I have no regrets.
+          </div>
+          <a class="gift-link" href="#" target="_blank" rel="noopener">
+            View item <span>↗</span>
+          </a>
+        </article>
+
+        <article class="gift-card">
+          <div class="gift-image">Add a product image here</div>
+          <div class="gift-title">8. Gift #8</div>
+          <div class="gift-note">
+            Paste the actual product link into the href below so you can one-click buy it.
+          </div>
+          <a class="gift-link" href="#" target="_blank" rel="noopener">
+            View item <span>↗</span>
+          </a>
+        </article>
+
+        <article class="gift-card">
+          <div class="gift-image">Add a product image here</div>
+          <div class="gift-title">9. Gift #9</div>
+          <div class="gift-note">
+            Tools, hobby gear, games, something loud with a battery — you know the vibe.
+          </div>
+          <a class="gift-link" href="#" target="_blank" rel="noopener">
+            View item <span>↗</span>
+          </a>
+        </article>
+
+        <article class="gift-card">
+          <div class="gift-image">Add a product image here</div>
+          <div class="gift-title">10. Gift #10</div>
+          <div class="gift-note">
+            Please coordinate so I don’t get three of the same thing. Love you, chaos gremlins.
+          </div>
+          <a class="gift-link" href="#" target="_blank" rel="noopener">
+            View item <span>↗</span>
+          </a>
+        </article>
+
+        <article class="gift-card">
+          <div class="gift-image">Add a product image here</div>
+          <div class="gift-title">11. Gift #11</div>
+          <div class="gift-note">
+            This slot is for something slightly sentimental so you can pretend I’m deep.
+          </div>
+          <a class="gift-link" href="#" target="_blank" rel="noopener">
+            View item <span>↗</span>
+          </a>
+        </article>
+
+        <article class="gift-card">
+          <div class="gift-image">Add a product image here</div>
+          <div class="gift-title">12. Gift #12</div>
+          <div class="gift-note">
+            The grand finale gift. If you nail this one, I will talk about it for years.
+          </div>
+          <a class="gift-link" href="#" target="_blank" rel="noopener">
+            View item <span>↗</span>
+          </a>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Built with too much free time, not enough coffee, and a lot of love. ❤️
+  </footer>
+
+  <!-- Animated AI terminal script -->
+  <script>
+    (function () {
+      const lines = [
+        "> booting DAD_XMAS_2025…",
+        "> loading: coffee.drivers",
+        "> rerouting elves into AI prompt engineers…",
+        "> scanning for: socks, ties, random mugs",
+        "> status: ❌ hard pass",
+        "> locating: gadgets, toys, coffee, tools…",
+        "> probability of dad happiness: 97.3%",
+        "> generating: unhinged Christmas website ✅",
+        "> warning: family may say 'is he okay?'",
+        "> continue to section: #list"
+      ];
+
+      const output = document.getElementById("console-output");
+      if (!output) return;
+
+      let lineIndex = 0;
+      let charIndex = 0;
+      let currentLine = "";
+
+      function typeLoop() {
+        if (lineIndex >= lines.length) {
+          // pause then restart
+          setTimeout(() => {
+            output.innerHTML = "";
+            lineIndex = 0;
+            charIndex = 0;
+            currentLine = "";
+            typeLoop();
+          }, 2000);
+          return;
+        }
+
+        const target = lines[lineIndex];
+
+        if (charIndex < target.length) {
+          currentLine += target[charIndex];
+          charIndex++;
+
+          let lastLine = output.lastElementChild;
+          if (!lastLine || lastLine.dataset.lineIndex != lineIndex) {
+            lastLine = document.createElement("div");
+            lastLine.className = "console-line";
+            lastLine.dataset.lineIndex = lineIndex;
+            output.appendChild(lastLine);
+          }
+
+          lastLine.textContent = currentLine;
+          output.scrollTop = output.scrollHeight;
+
+          setTimeout(typeLoop, 40); // typing speed
+        } else {
+          // next line
+          charIndex = 0;
+          currentLine = "";
+          lineIndex++;
+          setTimeout(typeLoop, 250);
+        }
+      }
+
+      typeLoop();
+    })();
+  </script>
+</body>
+</html>
