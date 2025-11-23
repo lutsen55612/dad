@@ -43,7 +43,7 @@
     header {
       position: sticky;
       top: 0;
-      z-index: 3;
+      z-index: 5;
       backdrop-filter: blur(16px);
       background: linear-gradient(
         to bottom,
@@ -406,8 +406,8 @@
       padding: 2rem 1rem 3rem;
     }
 
-    /* BIG DRAMATIC SNOWFLAKES */
-    .snow {
+    /* Snow container (actual flakes added via JS for randomness) */
+    .snow-layer {
       position: fixed;
       inset: 0;
       pointer-events: none;
@@ -415,48 +415,37 @@
       overflow: hidden;
     }
 
-    .snow::before,
-    .snow::after {
-      content: "❄ ❆ ❅ ❄ ❆ ❅ ❄ ❆ ❅ ❄ ❆ ❅";
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 2.6rem;
-      line-height: 1.8;
-      opacity: 0.75;
-      animation: big-snow 18s linear infinite;
-      white-space: pre;
+    .snowflake {
+      position: fixed;
+      top: -10vh;
+      font-size: 2.2rem;
+      opacity: 0.7;
+      animation-name: snow-fall;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      will-change: transform;
     }
 
-    .snow::after {
-      opacity: 0.55;
-      font-size: 2.1rem;
-      animation-duration: 24s;
-      animation-delay: -4s;
-    }
-
-    @keyframes big-snow {
+    @keyframes snow-fall {
       0% {
-        top: -110%;
-        transform: translateX(-50%) translateY(0);
+        transform: translate3d(0, -10vh, 0);
       }
       100% {
-        top: 110%;
-        transform: translateX(-52%) translateY(0);
+        transform: translate3d(var(--drift, 20vw), 120vh, 0);
       }
     }
 
-    /* SANTA COMIC SLEIGH – full meltdown mode */
+    /* SANTA COMIC SLEIGH – diagonal, extra whimsical */
     .santa-sleigh {
       position: fixed;
-      top: 10%;
-      left: -40%;
+      top: -15vh;
+      left: -30vw;
       z-index: 4;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 0.3rem;
-      animation: santa-sleigh-fly 20s linear infinite;
+      animation: santa-sleigh-fly 22s linear infinite;
       pointer-events: none;
     }
 
@@ -493,23 +482,20 @@
 
     @keyframes santa-sleigh-fly {
       0% {
-        transform: translateX(-140vw) translateY(0);
+        transform: translate3d(-20vw, -15vh, 0) rotate(-8deg);
       }
-      25% {
-        transform: translateX(-70vw) translateY(-8px);
+      30% {
+        transform: translate3d(10vw, 5vh, 0) rotate(-4deg);
       }
-      50% {
-        transform: translateX(0) translateY(4px);
-      }
-      75% {
-        transform: translateX(70vw) translateY(-6px);
+      60% {
+        transform: translate3d(50vw, 25vh, 0) rotate(2deg);
       }
       100% {
-        transform: translateX(140vw) translateY(0);
+        transform: translate3d(110vw, 55vh, 0) rotate(6deg);
       }
     }
 
-    /* Blinking Christmas trees – full chaos */
+    /* Blinking Christmas trees – chaos mode */
     .tree-row {
       margin-top: 2rem;
       display: flex;
@@ -572,14 +558,67 @@
       margin-bottom: 1rem;
       font-size: 2.8rem;
     }
+
+    /* Random flashing Christmas light strings */
+    .lights-layer {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    .light-string {
+      position: absolute;
+      display: flex;
+      gap: 0.6rem;
+      transform-origin: center;
+    }
+
+    .light-bulb {
+      width: 10px;
+      height: 18px;
+      border-radius: 999px 999px 60% 60%;
+      background: #f97316;
+      box-shadow: 0 0 6px rgba(248, 250, 252, 0.8);
+      animation: bulb-blink 1.2s infinite alternate;
+    }
+
+    .light-bulb::after {
+      content: "";
+      display: block;
+      width: 6px;
+      height: 4px;
+      border-radius: 999px 999px 0 0;
+      background: #0f172a;
+      margin: -4px auto 0;
+    }
+
+    @keyframes bulb-blink {
+      0% {
+        opacity: 0.35;
+        filter: drop-shadow(0 0 0px rgba(255, 255, 255, 0.0));
+      }
+      50% {
+        opacity: 0.9;
+        filter: drop-shadow(0 0 6px rgba(251, 191, 36, 1));
+      }
+      100% {
+        opacity: 0.5;
+        filter: drop-shadow(0 0 4px rgba(52, 211, 153, 1));
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="snow"></div>
+  <!-- random snowflakes and light strings are added via JS into these layers -->
+  <div class="snow-layer" id="snow-layer"></div>
+  <div class="lights-layer" id="lights-layer"></div>
 
-  <!-- SANTA PULLING A SLEIGH FULL OF REINDEER ACROSS THE SCREEN -->
+  <!-- SANTA PULLING A SLEIGH FULL OF REINDEER ACROSS THE SCREEN (DIAGONAL) -->
   <div class="santa-sleigh">
-    <div class="santa-speech">dad has gone full cyber-Christmas and there’s no going back</div>
+    <div class="santa-speech">
+      this was supposed to be a list, now it’s a cyber Christmas event
+    </div>
     <div class="santa-sleigh-track">
       <span class="reindeer">🦌</span>
       <span class="reindeer">🦌</span>
@@ -608,18 +647,17 @@
       <div>
         <div class="tagline">Dad has officially snapped</div>
         <h1>
-          This was supposed to be<br />
-          a normal Christmas list.<br />
-          Instead you got a cyber shrine.
+          This was supposed to be a normal Christmas<br />
+          but I am not normal.
         </h1>
         <p class="hero-sub">
-          At some point after the 47th “What do you want for Christmas?” my brain said,
-          “You know what would be easier? A full website with animations.” So here we are:
-          flying Santa, glitchy console, and an over-engineered gift grid.
+          After being asked “What do you want for Christmas?” one too many times,
+          I did the only reasonable thing: built a full cyber Christmas shrine
+          with flying Santa, random snow, and a glowing gift grid.
         </p>
         <p class="wtf-note">
-          If you are currently asking “why did he build a whole site for this?” – perfect.
-          That means the experience is working as designed.
+          If you are wondering “why did he turn his wish list into a website?” –
+          that means everything is working exactly as intended.
         </p>
         <div class="button-row" style="margin-top:1rem;">
           <a href="#list" class="btn btn-primary">
@@ -660,14 +698,14 @@
             <h2>Santa’s AI Workshop™</h2>
             <p style="font-size:0.85rem; opacity:0.9;">
               The elves have been retrained as prompt engineers. This list has been
-              scientifically overthought and optimized for:
+              carefully over-engineered and optimized for:
             </p>
             <div class="pill-row">
               <div class="pill">Maximum dad joy</div>
               <div class="pill">Minimum “uh… thanks?”</div>
               <div class="pill">0% emergency socks</div>
               <div class="pill">High-impact nerd energy</div>
-              <div class="pill">Ridiculous presentation value</div>
+              <div class="pill">Legendary family reaction</div>
             </div>
           </div>
         </div>
@@ -684,10 +722,9 @@
           margin-bottom: 1rem;
         "
       >
-        Underneath all the chaos, these are real things I would actually love.
-        Click any card to open the product link. Please feel free to coordinate,
-        conspire, or dramatically overachieve. Bonus points for using this list
-        like some kind of family heist plan.
+        Under all the chaos and animations, these are real things I would genuinely
+        love. Click any card to open the product link. You are strongly encouraged
+        to coordinate, conspire, and possibly overdo it just a little.
       </p>
 
       <div class="grid">
@@ -851,8 +888,9 @@
     Built with too much free time, not enough coffee, and a lot of love. ❤️
   </footer>
 
-  <!-- Animated AI terminal script -->
+  <!-- Animated AI terminal + random snow + random lights -->
   <script>
+    // DAD AI TERMINAL
     (function () {
       const lines = [
         "> booting DAD_XMAS_2025…",
@@ -911,6 +949,70 @@
       }
 
       typeLoop();
+    })();
+
+    // RANDOM SNOWFLAKES
+    (function () {
+      const snowLayer = document.getElementById("snow-layer");
+      if (!snowLayer) return;
+
+      const flakes = 60;
+      const snowChars = ["❄", "❆", "❅"];
+
+      for (let i = 0; i < flakes; i++) {
+        const span = document.createElement("span");
+        span.className = "snowflake";
+        span.textContent = snowChars[Math.floor(Math.random() * snowChars.length)];
+
+        const left = Math.random() * 100; // vw
+        const duration = 10 + Math.random() * 15; // 10 - 25s
+        const delay = Math.random() * -20; // negative delay to desync
+        const size = 1.8 + Math.random() * 1.6; // 1.8 - 3.4rem
+        const drift = (Math.random() * 40 - 20) + "vw"; // -20vw to +20vw
+
+        span.style.left = left + "vw";
+        span.style.animationDuration = duration + "s";
+        span.style.animationDelay = delay + "s";
+        span.style.fontSize = size + "rem";
+        span.style.setProperty("--drift", drift);
+
+        snowLayer.appendChild(span);
+      }
+    })();
+
+    // RANDOM FLASHING CHRISTMAS LIGHT STRINGS
+    (function () {
+      const lightsLayer = document.getElementById("lights-layer");
+      if (!lightsLayer) return;
+
+      const stringCount = 7;
+      const colors = ["#f97316", "#22c55e", "#38bdf8", "#e11d48", "#facc15"];
+
+      for (let i = 0; i < stringCount; i++) {
+        const string = document.createElement("div");
+        string.className = "light-string";
+
+        const bulbs = 10 + Math.floor(Math.random() * 8); // 10 - 17 bulbs
+        for (let j = 0; j < bulbs; j++) {
+          const bulb = document.createElement("div");
+          bulb.className = "light-bulb";
+          const color = colors[Math.floor(Math.random() * colors.length)];
+          bulb.style.background = color;
+          bulb.style.animationDuration = (0.9 + Math.random() * 0.9) + "s";
+          bulb.style.animationDelay = (Math.random() * 1.5) + "s";
+          string.appendChild(bulb);
+        }
+
+        const top = Math.random() * 80; // vh
+        const left = Math.random() * 80; // vw
+        const rotation = (Math.random() * 40 - 20); // -20deg to 20deg
+
+        string.style.top = top + "vh";
+        string.style.left = left + "vw";
+        string.style.transform = "rotate(" + rotation + "deg)";
+
+        lightsLayer.appendChild(string);
+      }
     })();
   </script>
 </body>
