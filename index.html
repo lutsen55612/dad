@@ -132,7 +132,6 @@
       margin-bottom: 1rem;
     }
 
-    /* Hero line: allow our manual <br> to make exactly 2 lines */
     .hero-line {
       display: inline-block;
     }
@@ -333,7 +332,7 @@
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 1rem;
     }
 
@@ -363,6 +362,7 @@
       padding: 0.75rem;
       margin-bottom: 0.5rem;
       opacity: 0.9;
+      overflow: hidden;
     }
 
     .gift-image img {
@@ -370,8 +370,6 @@
       max-height: 100%;
       object-fit: contain;
       display: block;
-      margin: 0 auto;
-      border-radius: 0.5rem;
     }
 
     .gift-title {
@@ -512,21 +510,10 @@
       animation: tree-blink 1.3s infinite steps(1);
     }
 
-    .tree:nth-child(2) {
-      animation-duration: 1.1s;
-    }
-
-    .tree:nth-child(3) {
-      animation-duration: 1.7s;
-    }
-
-    .tree:nth-child(4) {
-      animation-duration: 0.9s;
-    }
-
-    .tree:nth-child(5) {
-      animation-duration: 1.5s;
-    }
+    .tree:nth-child(2) { animation-duration: 1.1s; }
+    .tree:nth-child(3) { animation-duration: 1.7s; }
+    .tree:nth-child(4) { animation-duration: 0.9s; }
+    .tree:nth-child(5) { animation-duration: 1.5s; }
 
     .tree::after {
       content: "✨";
@@ -538,21 +525,11 @@
     }
 
     @keyframes tree-blink {
-      0% {
-        filter: drop-shadow(0 0 0px rgba(255, 255, 255, 0));
-      }
-      25% {
-        filter: drop-shadow(0 0 6px rgba(248, 113, 113, 1));
-      }
-      50% {
-        filter: drop-shadow(0 0 6px rgba(56, 189, 248, 1));
-      }
-      75% {
-        filter: drop-shadow(0 0 6px rgba(244, 114, 182, 1));
-      }
-      100% {
-        filter: drop-shadow(0 0 0px rgba(255, 255, 255, 0));
-      }
+      0%   { filter: drop-shadow(0 0 0px rgba(255,255,255,0.0)); }
+      25%  { filter: drop-shadow(0 0 6px rgba(248,113,113,1)); }
+      50%  { filter: drop-shadow(0 0 6px rgba(56,189,248,1)); }
+      75%  { filter: drop-shadow(0 0 6px rgba(244,114,182,1)); }
+      100% { filter: drop-shadow(0 0 0px rgba(255,255,255,0.0)); }
     }
 
     .tree-row-bottom {
@@ -663,7 +640,7 @@
       }
     }
 
-    /* Random big floating lights on the page – 25% smaller */
+    /* Random big floating lights on the page */
     .floating-lights-layer {
       position: fixed;
       inset: 0;
@@ -722,31 +699,19 @@
   <!-- single whimsical string of lights across the top -->
   <div class="top-lights" aria-hidden="true">
     <div class="light-wire">
-      <span class="light-bulb"></span>
-      <span class="light-bulb"></span>
-      <span class="light-bulb"></span>
-      <span class="light-bulb"></span>
-      <span class="light-bulb"></span>
-      <span class="light-bulb"></span>
-      <span class="light-bulb"></span>
-      <span class="light-bulb"></span>
-      <span class="light-bulb"></span>
-      <span class="light-bulb"></span>
-      <span class="light-bulb"></span>
-      <span class="light-bulb"></span>
-      <span class="light-bulb"></span>
-      <span class="light-bulb"></span>
-      <span class="light-bulb"></span>
-      <span class="light-bulb"></span>
-      <span class="light-bulb"></span>
-      <span class="light-bulb"></span>
+      <span class="light-bulb"></span><span class="light-bulb"></span><span class="light-bulb"></span>
+      <span class="light-bulb"></span><span class="light-bulb"></span><span class="light-bulb"></span>
+      <span class="light-bulb"></span><span class="light-bulb"></span><span class="light-bulb"></span>
+      <span class="light-bulb"></span><span class="light-bulb"></span><span class="light-bulb"></span>
+      <span class="light-bulb"></span><span class="light-bulb"></span><span class="light-bulb"></span>
+      <span class="light-bulb"></span><span class="light-bulb"></span><span class="light-bulb"></span>
     </div>
   </div>
 
   <!-- Santa + sleigh + reindeer flying diagonally -->
   <div class="santa-sleigh">
     <div class="santa-speech">
-      Ho Ho Ho ... your dad went crazy !
+      Ho Ho Ho ... your dad went crazy!
     </div>
     <div class="santa-sleigh-track">
       <span class="reindeer">🦌</span>
@@ -858,18 +823,13 @@
         <!-- 1 -->
         <article class="gift-card">
           <div class="gift-image">
-            <img src="https://m.media-amazon.com/images/I/71WdeKYuiwL._AC_SL1500_.jpg" alt="Amazon pick #1" />
+            <img src="https://m.media-amazon.com/images/I/71WdeKYuiwL._AC_SL1500_.jpg" alt="Gift 1 image" />
           </div>
-          <div class="gift-title">1. Amazon Pick #1 (Trust Me)</div>
+          <div class="gift-title">1. Cozy Winter Upgrade</div>
           <div class="gift-note">
-            First mystery Amazon pick. Just click, order, and know it is 100 percent something I actually want.
+            Warm, practical, and the opposite of getting me another random mug. High chance of daily use.
           </div>
-          <a
-            class="gift-link"
-            href="https://www.amazon.com/gp/aw/d/B08JYP1LD6/?_encoding=UTF8&amp;pd_rd_plhdr=t&amp;aaxitk=097950818e53e7e51ec766c0d5320da3&amp;hsa_cr_id=0&amp;qid=1763940874&amp;sr=1-1-9e67e56a-6f64-441f-a281-df67fc737124&amp;ref_=sbx_s_sparkle_sbtcd_asin_0_title&amp;pd_rd_w=v9s9H&amp;content-id=amzn1.sym.9f2b2b9e-47e9-4764-a4dc-2be2f6fca36d%253Aamzn1.sym.9f2b2b9e-47e9-4764-a4dc-2be2f6fca36d&amp;pf_rd_p=9f2b2b9e-47e9-4764-a4dc-2be2f6fca36d&amp;pf_rd_r=816WRB6KSP5Q9VMCDNJY&amp;pd_rd_wg=CvwYr&amp;pd_rd_r=5da5a0d6-56af-4708-9da6-e4f0b9103a1b"
-            target="_blank"
-            rel="noopener"
-          >
+          <a class="gift-link" href="https://www.amazon.com/gp/aw/d/B08JYP1LD6/?_encoding=UTF8&pd_rd_plhdr=t&aaxitk=097950818e53e7e51ec766c0d5320da3&hsa_cr_id=0&qid=1763940874&sr=1-1-9e67e56a-6f64-441f-a281-df67fc737124&ref_=sbx_s_sparkle_sbtcd_asin_0_title&pd_rd_w=v9s9H&content-id=amzn1.sym.9f2b2b9e-47e9-4764-a4dc-2be2f6fca36d%253Aamzn1.sym.9f2b2b9e-47e9-4764-a4dc-2be2f6fca36d&pf_rd_p=9f2b2b9e-47e9-4764-a4dc-2be2f6fca36d&pf_rd_r=816WRB6KSP5Q9VMCDNJY&pd_rd_wg=CvwYr&pd_rd_r=5da5a0d6-56af-4708-9da6-e4f0b9103a1b" target="_blank" rel="noopener">
             View item <span>↗</span>
           </a>
         </article>
@@ -877,18 +837,13 @@
         <!-- 2 -->
         <article class="gift-card">
           <div class="gift-image">
-            <img src="https://m.media-amazon.com/images/I/513jn4C5CzL._AC_SL1500_.jpg" alt="Sena SPIDER ST1 Clamp Kit" />
+            <img src="https://m.media-amazon.com/images/I/61E+qxXUB5L._AC_SL1500_.jpg" alt="Gift 2 image" />
           </div>
-          <div class="gift-title">2. Sena SPIDER ST1 Clamp Kit</div>
+          <div class="gift-title">2. Sena Spider ST1 Headset</div>
           <div class="gift-note">
-            Lets me mount the Sena unit properly so I can actually hear and talk like a civilized motorized human.
+            For staying connected on rides without yelling over the wind like a maniac.
           </div>
-          <a
-            class="gift-link"
-            href="https://www.amazon.com/Sena-Adult-Helmet-Clamp-SPIDER/dp/B0BB5BCGQY/ref=sr_1_10?crid=3M8OAF2ARMPVR&amp;dib=eyJ2IjoiMSJ9.5VRTOCjiauyLVYeTDNZeP1HtrG72zEr6hoU0Uo1-XuoB88CLCnKGmuvOgjh3acSVY7xBYwmkY3qsSIH0vxdJyWGnzyFJtG6yXWjpKfA7Mcbq3bBJKWRKXGIlkQ0lU2e5rvh1e1lTMtSuA-28IVnyijnkrR5Pp-zp_JPtSuM9WF78w7iuNDhebR-6DC3eDwonLXdfmp79EAeylB_1cfghtf2CKtrZKaNqhdhblepjtGytjCbst_0wLNQNLhlmXqgsjGBLq1zFwsHc8JNCQGGHOBATYWfE-ti0ANWdjvDX2LE.WiZWBexkcdEHLf5JcwJXa-54zwAJMpIeEX6I0wZx5jE&amp;dib_tag=se&amp;keywords=Sena+Spider+ST1&amp;qid=1763941200&amp;s=automotive&amp;sprefix=sena+spider+st1%2Caps%2C166&amp;sr=1-10"
-            target="_blank"
-            rel="noopener"
-          >
+          <a class="gift-link" href="https://www.amazon.com/Sena-Adult-Helmet-Clamp-SPIDER/dp/B0BB5BCGQY/ref=sr_1_10?crid=3M8OAF2ARMPVR&dib=eyJ2IjoiMSJ9.5VRTOCjiauyLVYeTDNZeP1HtrG72zEr6hoU0Uo1-XuoB88CLCnKGmuvOgjh3acSVY7xBYwmkY3qsSIH0vxdJyWGnzyFJtG6yXWjpKfA7Mcbq3bBJKWRKXGIlkQ0lU2e5rvh1e1lTMtSuA-28IVnyijnkrR5Pp-zp_JPtSuM9WF78w7iuNDhebR-6DC3eDwonLXdfmp79EAeylB_1cfghtf2CKtrZKaNqhdhblepjtGytjCbst_0wLNQNLhlmXqgsjGBLq1zFwsHc8JNCQGGHOBATYWfE-ti0ANWdjvDX2LE.WiZWBexkcdEHLf5JcwJXa-54zwAJMpIeEX6I0wZx5jE&dib_tag=se&keywords=Sena+Spider+ST1&qid=1763941200&s=automotive&sprefix=sena+spider+st1%2Caps%2C166&sr=1-10" target="_blank" rel="noopener">
             View item <span>↗</span>
           </a>
         </article>
@@ -896,18 +851,13 @@
         <!-- 3 -->
         <article class="gift-card">
           <div class="gift-image">
-            <img src="https://m.media-amazon.com/images/I/61E+qxXUB5L._AC_SL1500_.jpg" alt="Sena SPIDER ST1 Clamp Kit #2" />
+            <img src="https://m.media-amazon.com/images/I/61E+qxXUB5L._AC_SL1500_.jpg" alt="Gift 3 image" />
           </div>
-          <div class="gift-title">3. Sena Clamp Kit #2 (Second Helmet)</div>
+          <div class="gift-title">3. Second Sena Spider ST1</div>
           <div class="gift-note">
-            Same clamp kit, second slot. Perfect for another helmet or just being the hero of spare parts.
+            Because rides are more fun when someone else can hear my brilliant commentary.
           </div>
-          <a
-            class="gift-link"
-            href="https://www.amazon.com/Sena-Adult-Helmet-Clamp-SPIDER/dp/B0BB5BCGQY/ref=sr_1_10?crid=3M8OAF2ARMPVR&amp;dib=eyJ2IjoiMSJ9.5VRTOCjiauyLVYeTDNZeP1HtrG72zEr6hoU0Uo1-XuoB88CLCnKGmuvOgjh3acSVY7xBYwmkY3qsSIH0vxdJyWGnzyFJtG6yXWjpKfA7Mcbq3bBJKWRKXGIlkQ0lU2e5rvh1e1lTMtSuA-28IVnyijnkrR5Pp-zp_JPtSuM9WF78w7iuNDhebR-6DC3eDwonLXdfmp79EAeylB_1cfghtf2CKtrZKaNqhdhblepjtGytjCbst_0wLNQNLhlmXqgsjGBLq1zFwsHc8JNCQGGHOBATYWfE-ti0ANWdjvDX2LE.WiZWBexkcdEHLf5JcwJXa-54zwAJMpIeEX6I0wZx5jE&amp;dib_tag=se&amp;keywords=Sena+Spider+ST1&amp;qid=1763941200&amp;s=automotive&amp;sprefix=sena+spider+st1%2Caps%2C166&amp;sr=1-10"
-            target="_blank"
-            rel="noopener"
-          >
+          <a class="gift-link" href="https://www.amazon.com/Sena-Adult-Helmet-Clamp-SPIDER/dp/B0BB5BCGQY/ref=sr_1_10?crid=3M8OAF2ARMPVR&dib=eyJ2IjoiMSJ9.5VRTOCjiauyLVYeTDNZeP1HtrG72zEr6hoU0Uo1-XuoB88CLCnKGmuvOgjh3acSVY7xBYwmkY3qsSIH0vxdJyWGnzyFJtG6yXWjpKfA7Mcbq3bBJKWRKXGIlkQ0lU2e5rvh1e1lTMtSuA-28IVnyijnkrR5Pp-zp_JPtSuM9WF78w7iuNDhebR-6DC3eDwonLXdfmp79EAeylB_1cfghtf2CKtrZKaNqhdhblepjtGytjCbst_0wLNQNLhlmXqgsjGBLq1zFwsHc8JNCQGGHOBATYWfE-ti0ANWdjvDX2LE.WiZWBexkcdEHLf5JcwJXa-54zwAJMpIeEX6I0wZx5jE&dib_tag=se&keywords=Sena+Spider+ST1&qid=1763941200&s=automotive&sprefix=sena+spider+st1%2Caps%2C166&sr=1-10" target="_blank" rel="noopener">
             View item <span>↗</span>
           </a>
         </article>
@@ -915,18 +865,13 @@
         <!-- 4 -->
         <article class="gift-card">
           <div class="gift-image">
-            <img src="https://m.media-amazon.com/images/G/01/apparel/rcxgs/tile._CB483369110_.gif" alt="Sena SPIDER ST1 Speakers" />
+            <img src="https://m.media-amazon.com/images/I/513jn4C5CzL._AC_SL1500_.jpg" alt="Gift 4 image" />
           </div>
-          <div class="gift-title">4. Sena SPIDER ST1 Speakers</div>
+          <div class="gift-title">4. Sena HD Speakers</div>
           <div class="gift-note">
-            These are the speakers for the Sena setup so I can hear music, directions, or your voices (when I choose to).
+            Because if I am going to listen to music on the trail, it might as well sound amazing.
           </div>
-          <a
-            class="gift-link"
-            href="https://www.amazon.com/Sena-Speakers-Type-SPIDER-ST1/dp/B0BB56JJLS/ref=sr_1_11?crid=3M8OAF2ARMPVR&amp;dib=eyJ2IjoiMSJ9.5VRTOCjiauyLVYeTDNZeP1HtrG72zEr6hoU0Uo1-XuoB88CLCnKGmuvOgjh3acSVY7xBYwmkY3qsSIH0vxdJyWGnzyFJtG6yXWjpKfA7Mcbq3bBJKWRKXGIlkQ0lU2e5rvh1e1lTMtSuA-28IVnyijnkrR5Pp-zp_JPtSuM9WF78w7iuNDhebR-6DC3eDwonLXdfmp79EAeylB_1cfghtf2CKtrZKaNqhdhblepjtGytjCbst_0wLNQNLhlmXqgsjGBLq1zFwsHc8JNCQGGHOBATYWfE-ti0ANWdjvDX2LE.WiZWBexkcdEHLf5JcwJXa-54zwAJMpIeEX6I0wZx5jE&amp;dib_tag=se&amp;keywords=Sena+Spider+ST1&amp;qid=1763941200&amp;s=automotive&amp;sprefix=sena+spider+st1%2Caps%2C166&amp;sr=1-11"
-            target="_blank"
-            rel="noopener"
-          >
+          <a class="gift-link" href="https://www.amazon.com/Sena-Speakers-Type-SPIDER-ST1/dp/B0BB56JJLS/ref=sr_1_11?crid=3M8OAF2ARMPVR&dib=eyJ2IjoiMSJ9.5VRTOCjiauyLVYeTDNZeP1HtrG72zEr6hoU0Uo1-XuoB88CLCnKGmuvOgjh3acSVY7xBYwmkY3qsSIH0vxdJyWGnzyFJtG6yXWjpKfA7Mcbq3bBJKWRKXGIlkQ0lU2e5rvh1e1lTMtSuA-28IVnyijnkrR5Pp-zp_JPtSuM9WF78w7iuNDhebR-6DC3eDwonLXdfmp79EAeylB_1cfghtf2CKtrZKaNqhdhblepjtGytjCbst_0wLNQNLhlmXqgsjGBLq1zFwsHc8JNCQGGHOBATYWfE-ti0ANWdjvDX2LE.WiZWBexkcdEHLf5JcwJXa-54zwAJMpIeEX6I0wZx5jE&dib_tag=se&keywords=Sena+Spider+ST1&qid=1763941200&s=automotive&sprefix=sena+spider+st1%2Caps%2C166&sr=1-11" target="_blank" rel="noopener">
             View item <span>↗</span>
           </a>
         </article>
@@ -934,18 +879,13 @@
         <!-- 5 -->
         <article class="gift-card">
           <div class="gift-image">
-            <img src="https://m.media-amazon.com/images/I/71b-JE4NRfL._AC_SL1500_.jpg" alt="Amazon Pick #2" />
+            <img src="https://m.media-amazon.com/images/I/71b-JE4NRfL._AC_SL1500_.jpg" alt="Gift 5 image" />
           </div>
-          <div class="gift-title">5. Amazon Pick #2 (Gadget Slot)</div>
+          <div class="gift-title">5. Warm Riding Gloves</div>
           <div class="gift-note">
-            A specific gadget that the link explains better than I can. Just know it hits the sweet spot of useful and fun.
+            Fingers should not feel like icicles. These help with that. Also look pretty slick.
           </div>
-          <a
-            class="gift-link"
-            href="https://www.amazon.com/gp/aw/d/B085NTR26K/?_encoding=UTF8&amp;pd_rd_plhdr=t&amp;aaxitk=0d55a993b81016c839aa7b7beb05c90c&amp;hsa_cr_id=0&amp;qid=1763941683&amp;sr=1-3-f02f01d6-adaf-4bef-9a7c-29308eff9043&amp;ref_=sbx__sbtcd2_asin_2_title&amp;pd_rd_w=h4hqE&amp;content-id=amzn1.sym.e2c9099f-6964-4dbf-9ce9-8bc2c1a8ec1a%3Aamzn1.sym.e2c9099f-6964-4dbf-9ce9-8bc2c1a8ec1a&amp;pf_rd_p=e2c9099f-6964-4dbf-9ce9-8bc2c1a8ec1a&amp;pf_rd_r=BJ6D5XA97V6NYR4VAPWE&amp;pd_rd_wg=Rimg8&amp;pd_rd_r=93c7553c-7791-4fd2-b258-11f93948532a"
-            target="_blank"
-            rel="noopener"
-          >
+          <a class="gift-link" href="https://www.amazon.com/gp/aw/d/B085NTR26K/?_encoding=UTF8&pd_rd_plhdr=t&aaxitk=0d55a993b81016c839aa7b7beb05c90c&hsa_cr_id=0&qid=1763941683&sr=1-3-f02f01d6-adaf-4bef-9a7c-29308eff9043&ref_=sbx__sbtcd2_asin_2_title&pd_rd_w=h4hqE&content-id=amzn1.sym.e2c9099f-6964-4dbf-9ce9-8bc2c1a8ec1a%3Aamzn1.sym.e2c9099f-6964-4dbf-9ce9-8bc2c1a8ec1a&pf_rd_p=e2c9099f-6964-4dbf-9ce9-8bc2c1a8ec1a&pf_rd_r=BJ6D5XA97V6NYR4VAPWE&pd_rd_wg=Rimg8&pd_rd_r=93c7553c-7791-4fd2-b258-11f93948532a" target="_blank" rel="noopener">
             View item <span>↗</span>
           </a>
         </article>
@@ -953,18 +893,13 @@
         <!-- 6 -->
         <article class="gift-card">
           <div class="gift-image">
-            <img src="https://m.media-amazon.com/images/I/71Sr52y32ML._AC_SL1500_.jpg" alt="NOVUS Plastic / Pinball Polish Kit" />
+            <img src="https://m.media-amazon.com/images/I/71Sr52y32ML._AC_SL1500_.jpg" alt="Gift 6 image" />
           </div>
-          <div class="gift-title">6. NOVUS Plastic / Pinball Polish Kit</div>
+          <div class="gift-title">6. Novus Plastic Polish Kit</div>
           <div class="gift-note">
-            Perfect for keeping pinball and plastic bits clear, smooth, and way less scratched. Shiny things make me happy.
+            For buffing out pinball scars, mystery scuffs, and all the “how did that scratch get there?” moments.
           </div>
-          <a
-            class="gift-link"
-            href="https://www.amazon.com/NOVUS-PK1-8-Plastic-Scratch-Remover-Bottles/dp/B002UCYRZU/ref=sr_1_5?crid=1ERZAQ5TJAO1V&amp;dib=eyJ2IjoiMSJ9.x40ojojIcgG305Yz5Pb-QB4lLCdUtG_00n-0MBuMMGE1kmkqBrH4HGULHNtVMGoXU3V6KkiWx4YzjW1ffy7F6OH9POfbsDh8HHkge-vcAi9jBxk21sc84SaGHnL399hvxo6a94Olvw5aheX1h9Mkl_WY3UU3-C3wmwouyJlFSyKEOxIxuBDC8DwPiwUZ1arhHwOqQAAx0fdPuct113O4mUZ-7Uki9t3Ethjjg_9ue9U.1UXijpDsdfM2PeRKuRl0oYmBfKU2E8EU1BzdRoJMKAs&amp;dib_tag=se&amp;keywords=pinball+polish&amp;qid=1763941997&amp;sprefix=pinball+polish%2Caps%2C176&amp;sr=8-5"
-            target="_blank"
-            rel="noopener"
-          >
+          <a class="gift-link" href="https://www.amazon.com/NOVUS-PK1-8-Plastic-Scratch-Remover-Bottles/dp/B002UCYRZU/ref=sr_1_5?crid=1ERZAQ5TJAO1V&dib=eyJ2IjoiMSJ9.x40ojojIcgG305Yz5Pb-QB4lLCdUtG_00n-0MBuMMGE1kmkqBrH4HGULHNtVMGoXU3V6KkiWx4YzjW1ffy7F6OH9POfbsDh8HHkge-vcAi9jBxk21sc84SaGHnL399hvxo6a94Olvw5aheX1h9Mkl_WY3UU3-C3wmwouyJlFSyKEOxIxuBDC8DwPiwUZ1arhHwOqQAAx0fdPuct113O4mUZ-7Uki9t3Ethjjg_9ue9U.1UXijpDsdfM2PeRKuRl0oYmBfKU2E8EU1BzdRoJMKAs&dib_tag=se&keywords=pinball+polish&qid=1763941997&sprefix=pinball+polish%2Caps%2C176&sr=8-5" target="_blank" rel="noopener">
             View item <span>↗</span>
           </a>
         </article>
@@ -972,18 +907,13 @@
         <!-- 7 -->
         <article class="gift-card">
           <div class="gift-image">
-            <img src="https://m.media-amazon.com/images/I/71McwdfZp1S._AC_SL1500_.jpg" alt="303 Marine / Aerospace Protectant" />
+            <img src="https://m.media-amazon.com/images/I/71McwdfZp1S._AC_SL1500_.jpg" alt="Gift 7 image" />
           </div>
-          <div class="gift-title">7. 303 Marine / Aerospace Protectant</div>
+          <div class="gift-title">7. 303 Aerospace Protectant</div>
           <div class="gift-note">
-            Great for protecting gear, vehicles, and random dad equipment from UV and grime. Very practical, very satisfying.
+            Magic sauce for plastic, vinyl, and rubber. Makes old things look suspiciously new again.
           </div>
-          <a
-            class="gift-link"
-            href="https://www.amazon.com/303-Marine-Aerospace-Protectant-Protection/dp/B0000AY1W1/ref=sr_1_4?crid=UGHZSWX3GND&amp;dib=eyJ2IjoiMSJ9.Iagw0fJtOjblN2aFVrp8ZDTcTcbbl9Lv7TD8cKKcKUBE824wAdo3r6UI7cHgvSLBer7fK_nDhtXp8kUpZQTb7P8D92zVuqpa2_j8NVWjqbxDhJjFfCYHhGv7tYQC7m0OvrGsKEp-93u2_-e_hJ5OEwccoSh-M3emSa49I7B_5kIwcRn782lGnUdoQA_-kU5WSpTn2dYoT4vwXGTofgnqpIIp6Flith3BbtkApUBJe30.a9x4kKZhzfEpcAY6zYH7-Joy5EZEQQl2x2aRSDnNtEE&amp;dib_tag=se&amp;keywords=303+aerospace+protectant&amp;qid=1763942451&amp;sprefix=303%2Caps%2C186&amp;sr=8-4"
-            target="_blank"
-            rel="noopener"
-          >
+          <a class="gift-link" href="https://www.amazon.com/303-Marine-Aerospace-Protectant-Protection/dp/B0000AY1W1/ref=sr_1_4?crid=UGHZSWX3GND&dib=eyJ2IjoiMSJ9.Iagw0fJtOjblN2aFVrp8ZDTcTcbbl9Lv7TD8cKKcKUBE824wAdo3r6UI7cHgvSLBer7fK_nDhtXp8kUpZQTb7P8D92zVuqpa2_j8NVWjqbxDhJjFfCYHhGv7tYQC7m0OvrGsKEp-93u2_-e_hJ5OEwccoSh-M3emSa49I7B_5kIwcRn782lGnUdoQA_-kU5WSpTn2dYoT4vwXGTofgnqpIIp6Flith3BbtkApUBJe30.a9x4kKZhzfEpcAY6zYH7-Joy5EZEQQl2x2aRSDnNtEE&dib_tag=se&keywords=303+aerospace+protectant&qid=1763942451&sprefix=303%2Caps%2C186&sr=8-4" target="_blank" rel="noopener">
             View item <span>↗</span>
           </a>
         </article>
@@ -991,18 +921,13 @@
         <!-- 8 -->
         <article class="gift-card">
           <div class="gift-image">
-            <img src="https://m.media-amazon.com/images/I/61iEZ50wxZL._AC_SL1500_.jpg" alt="Breville Barista Express" />
+            <img src="https://m.media-amazon.com/images/I/61iEZ50wxZL._AC_SL1500_.jpg" alt="Gift 8 image" />
           </div>
-          <div class="gift-title">8. Breville Barista Express Espresso Machine</div>
+          <div class="gift-title">8. Breville Barista Express</div>
           <div class="gift-note">
-            Turns my coffee habit into a full-on espresso ritual. Shots, lattes, the works – at home, like a caffeinated wizard.
+            Peak dad energy: obsessing over espresso shots and talking about “extraction” like a pro barista.
           </div>
-          <a
-            class="gift-link"
-            href="https://www.amazon.com/Breville-BES870XL-Barista-Express-Espresso/dp/B00CH9QWOU/ref=sr_1_3?crid=1Q5DPX02SN1IW&amp;dib=eyJ2IjoiMSJ9.h0rT_c9uLBGrYzWemZoPgZDd7To36OAVNHvEzLm1aRPORmUW1OP9Sjq4igXfnilW6SzE33HVdqixqrzydpWTBi5Zi4W6sVMbQJI4nr8QZi6FK_o4wXRcq7bUqZgxqqnAzunpXrJ9AgMo3Y1lvoIqC5uEESQNPdd2nBlFvUsKI8dNNJfGVSzhQk9EehJNbZVhyACMhygGQiwzG-wybueSYRlaMY5RL7sQf0uisG7vmK0_vMaEULH5lScsd8lEDrcvUng-SMsjK-U6mAjEHtteFKN-W_PEGQ7w2LktuxeXAys.SoLrsS9mqtyVJQAvt_XBhexJTxxloGWswSR7HMGeg-Y&amp;dib_tag=se&amp;keywords=coffee%2Bmachine&amp;qid=1763942992&amp;sprefix=coffee%2Bmachin%2Caps%2C192&amp;sr=8-3&amp;th=1"
-            target="_blank"
-            rel="noopener"
-          >
+          <a class="gift-link" href="https://www.amazon.com/Breville-BES870XL-Barista-Express-Espresso/dp/B00CH9QWOU/ref=sr_1_3?crid=1Q5DPX02SN1IW&dib=eyJ2IjoiMSJ9.h0rT_c9uLBGrYzWemZoPgZDd7To36OAVNHvEzLm1aRPORmUW1OP9Sjq4igXfnilW6SzE33HVdqixqrzydpWTBi5Zi4W6sVMbQJI4nr8QZi6FK_o4wXRcq7bUqZgxqqnAzunpXrJ9AgMo3Y1lvoIqC5uEESQNPdd2nBlFvUsKI8dNNJfGVSzhQk9EehJNbZVhyACMhygGQiwzG-wybueSYRlaMY5RL7sQf0uisG7vmK0_vMaEULH5lScsd8lEDrcvUng-SMsjK-U6mAjEHtteFKN-W_PEGQ7w2LktuxeXAys.SoLrsS9mqtyVJQAvt_XBhexJTxxloGWswSR7HMGeg-Y&dib_tag=se&keywords=coffee%2Bmachine&qid=1763942992&sprefix=coffee%2Bmachin%2Caps%2C192&sr=8-3&th=1" target="_blank" rel="noopener">
             View item <span>↗</span>
           </a>
         </article>
@@ -1010,18 +935,13 @@
         <!-- 9 -->
         <article class="gift-card">
           <div class="gift-image">
-            <img src="https://m.media-amazon.com/images/I/71NtVTsl-PL._AC_SL1500_.jpg" alt="HexClad Hybrid Pan" />
+            <img src="https://m.media-amazon.com/images/I/71NtVTsl-PL._AC_SL1500_.jpg" alt="Gift 9 image" />
           </div>
-          <div class="gift-title">9. HexClad Hybrid Pan</div>
+          <div class="gift-title">9. HexClad Pan</div>
           <div class="gift-note">
-            Great for serious cooking sessions, weekend breakfasts, and pretending I have a cooking show in my kitchen.
+            For the part of me that wants to cook like a Food Network star while making Tuesday night eggs.
           </div>
-          <a
-            class="gift-link"
-            href="https://www.amazon.com/HexClad-Stay-Cool-Dishwasher-Induction-Compatible/dp/B0CLHH2V79/ref=ast_sto_dp_puis"
-            target="_blank"
-            rel="noopener"
-          >
+          <a class="gift-link" href="https://www.amazon.com/HexClad-Stay-Cool-Dishwasher-Induction-Compatible/dp/B0CLHH2V79/ref=ast_sto_dp_puis" target="_blank" rel="noopener">
             View item <span>↗</span>
           </a>
         </article>
@@ -1029,18 +949,13 @@
         <!-- 10 -->
         <article class="gift-card">
           <div class="gift-image">
-            <img src="https://m.media-amazon.com/images/I/71Mbl1whQiL._AC_SL1500_.jpg" alt="Amazon Pick #3" />
+            <img src="https://m.media-amazon.com/images/I/71Mbl1whQiL._AC_SL1500_.jpg" alt="Gift 10 image" />
           </div>
-          <div class="gift-title">10. Amazon Pick #3 (Bonus)</div>
+          <div class="gift-title">10. Heavy-Duty Meat Slicer/Grinder</div>
           <div class="gift-note">
-            Another hand-picked Amazon item. Think of it as the “Dad knows exactly what he wants, here’s the shortcut” option.
+            For turning big chunks of meat into neat little projects. Also: endless dad jerky experiments.
           </div>
-          <a
-            class="gift-link"
-            href="https://www.amazon.com/dp/B09Y25BY8G/ref=twister_B0C5K431HD?_encoding=UTF8&amp;th=1"
-            target="_blank"
-            rel="noopener"
-          >
+          <a class="gift-link" href="https://www.amazon.com/dp/B09Y25BY8G/ref=twister_B0C5K431HD?_encoding=UTF8&th=1" target="_blank" rel="noopener">
             View item <span>↗</span>
           </a>
         </article>
@@ -1048,18 +963,13 @@
         <!-- 11 -->
         <article class="gift-card">
           <div class="gift-image">
-            <img src="https://m.media-amazon.com/images/I/71ywcsGog7L._AC_SL1500_.jpg" alt="LEM Jerky Shooter Kit" />
+            <img src="https://m.media-amazon.com/images/I/71ywcsGog7L._AC_SL1500_.jpg" alt="Gift 11 image" />
           </div>
           <div class="gift-title">11. LEM Jerky Shooter Kit</div>
           <div class="gift-note">
-            Helps me make my own jerky like a proper cabin dad. Great for road trips, projects, and random snacking.
+            The logical next step: precision jerky delivery system. Expect weird flavor experiments.
           </div>
-          <a
-            class="gift-link"
-            href="https://www.amazon.com/Professional-Plastic-Stainless-Cleaning-Included/dp/B07YCH77SG/ref=sr_1_13?crid=FMUT2FCDNQY2&amp;dib=eyJ2IjoiMSJ9.4PnUWZoqapUMTMVIt8xxzWk1eyIgshBFrYfVsbLcge1ontdqVMyTS0xwx9ac829jhIUsIJkkLtUVt1M1bgiSeMQ6A2K_Aned2hdACfdKlHlQC5pWFXhW2aXnquK5UGa77A8MtnFJ_unmbY36ZLSu38QfqpF2kPAwTHrV75EkwHHt78-pI5wCg7VYn38PdFrdQ_dHWvEeE1-P5wZ_cAwpOcenOsPYlbB7DWBTzirTuVw.IT7hxvb8hDGviV4NCJjwD24HMffaVaVZ9Wyy5fYBBRg&amp;dib_tag=se&amp;keywords=lem+jerky+shooter&amp;qid=1763944094&amp;sprefix=lem+jerky+shooter%2Caps%2C188&amp;sr=8-13"
-            target="_blank"
-            rel="noopener"
-          >
+          <a class="gift-link" href="https://www.amazon.com/Professional-Plastic-Stainless-Cleaning-Included/dp/B07YCH77SG/ref=sr_1_13?crid=FMUT2FCDNQY2&dib=eyJ2IjoiMSJ9.4PnUWZoqapUMTMVIt8xxzWk1eyIgshBFrYfVsbLcge1ontdqVMyTS0xwx9ac829jhIUsIJkkLtUVt1M1bgiSeMQ6A2K_Aned2hdACfdKlHlQC5pWFXhW2aXnquK5UGa77A8MtnFJ_unmbY36ZLSu38QfqpF2kPAwTHrV75EkwHHt78-pI5wCg7VYn38PdFrdQ_dHWvEeE1-P5wZ_cAwpOcenOsPYlbB7DWBTzirTuVw.IT7hxvb8hDGviV4NCJjwD24HMffaVaVZ9Wyy5fYBBRg&dib_tag=se&keywords=lem+jerky+shooter&qid=1763944094&sprefix=lem+jerky+shooter%2Caps%2C188&sr=8-13" target="_blank" rel="noopener">
             View item <span>↗</span>
           </a>
         </article>
@@ -1069,16 +979,8 @@
 
   <!-- Extra chaos: more blinking trees at the bottom -->
   <div class="tree-row tree-row-bottom">
-    <span class="tree">🎄</span>
-    <span class="tree">🎄</span>
-    <span class="tree">🎄</span>
-    <span class="tree">🎄</span>
-    <span class="tree">🎄</span>
-    <span class="tree">🎄</span>
-    <span class="tree">🎄</span>
-    <span class="tree">🎄</span>
-    <span class="tree">🎄</span>
-    <span class="tree">🎄</span>
+    <span class="tree">🎄</span><span class="tree">🎄</span><span class="tree">🎄</span><span class="tree">🎄</span><span class="tree">🎄</span>
+    <span class="tree">🎄</span><span class="tree">🎄</span><span class="tree">🎄</span><span class="tree">🎄</span><span class="tree">🎄</span>
   </div>
 
   <footer>
@@ -1097,7 +999,7 @@
         "> result: 437 detected – hard pass",
         "> compiling: gadgets.coffee.tools.toys",
         "> adjusting wishlist: +chaos, +dorkiness, +maximum-fun",
-        "> projecting family reaction: "has he lost his mind?" → TRUE",
+        "> projecting family reaction: “has he lost his mind?” → TRUE",
         "> deploying over-engineered gift interface…",
         "> hint: scroll to The List before dad adds more animations"
       ];
@@ -1175,7 +1077,7 @@
       }
     })();
 
-    // RANDOM BIG FLOATING LIGHTS (smaller now)
+    // RANDOM BIG FLOATING LIGHTS
     (function () {
       const layer = document.getElementById("floating-lights-layer");
       if (!layer) return;
